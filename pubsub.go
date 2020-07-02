@@ -27,7 +27,7 @@ import (
 const DefaultMaxMessageSize = 1 << 20
 
 var (
-	TimeCacheDuration = 12 * time.Second
+	TimeCacheDuration = 60 * time.Second
 )
 
 var log = logging.Logger("pubsub")
@@ -199,6 +199,7 @@ type Option func(*PubSub) error
 
 // NewPubSub returns a new PubSub management object.
 func NewPubSub(ctx context.Context, h host.Host, rt PubSubRouter, opts ...Option) (*PubSub, error) {
+	log.Infof("TimeCacheDuration: %v", TimeCacheDuration)
 	ps := &PubSub{
 		host:                  h,
 		ctx:                   ctx,
