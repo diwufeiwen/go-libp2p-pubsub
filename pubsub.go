@@ -27,7 +27,7 @@ import (
 const DefaultMaxMessageSize = 1 << 20
 
 var (
-	TimeCacheDuration = 120 * time.Second
+	TimeCacheDuration = 1 * time.Second
 )
 
 var log = logging.Logger("pubsub")
