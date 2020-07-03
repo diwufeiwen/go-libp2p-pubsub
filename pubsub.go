@@ -947,6 +947,7 @@ func (p *PubSub) pushMsg(msg *Message) {
 
 	// reject messages claiming to be from ourselves but not locally published
 	self := p.host.ID()
+	log.Infof("Msg From:%s, self: %s, ReceivedFrom: %s", peer.ID(msg.GetFrom()), self, src)
 	if peer.ID(msg.GetFrom()) == self && src != self {
 		log.Debugf("dropping message claiming to be from self but forwarded from %s", src)
 		p.tracer.RejectMessage(msg, rejectSelfOrigin)
